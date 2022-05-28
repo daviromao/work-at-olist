@@ -10,3 +10,9 @@ class AuthorViewSet(viewsets.ReadOnlyModelViewSet):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filterset_fields = [
+        'name',
+        'edition',
+        'publication_year',
+        'authors',
+    ]
