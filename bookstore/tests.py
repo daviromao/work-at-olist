@@ -1,5 +1,7 @@
-from urllib import response
+from django.core.management import call_command
+from django.test import TestCase
 from django.urls import reverse
+from requests import options
 
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -124,4 +126,19 @@ class BookTests(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(current_list_amount - 1, Book.objects.count())
-        
+
+
+class ImportAuthorCommandTests(TestCase):
+
+    def test_import_author(self):
+        """
+        Ensure custom command test import it's working
+        """
+
+        path_file = 'bookstore/management/commands/test_import_authors.csv'
+        args = [path_file]
+
+        call_command('import_authors', *args)
+
+        self.assertEqual(Author.objects.count(), 2)
+        self.assertEqual(Author.objects.get(id=1).name, 'davi')
