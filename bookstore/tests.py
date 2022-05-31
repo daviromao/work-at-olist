@@ -137,7 +137,8 @@ class ImportAuthorCommandTests(TestCase):
         """
 
         path_file = 'bookstore/management/commands/test_import_authors.csv'
-        args = [path_file]
+
+        args = ['--hide', path_file]
 
         call_command('import_authors', *args)
 
