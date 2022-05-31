@@ -16,7 +16,7 @@ class Command(BaseCommand):
 			authors_reader = csv.reader(csv_authors)
 			next(authors_reader, None) #skip header
 
-			self.stdout.write('importing authros from csv file...')
+			self.stdout.write('importing authors from csv file...')
 
 			for name in authors_reader:
 				try:
