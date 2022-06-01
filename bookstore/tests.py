@@ -23,8 +23,10 @@ class AuthorTests(APITestCase):
 
         response = self.client.get(url, format='json')
         
+        author_results = response.data['results']
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 2)
+        self.assertEqual(len(author_results), 2)
 
     def test_get_author(self):
         """
@@ -135,7 +137,8 @@ class ImportAuthorCommandTests(TestCase):
         """
 
         path_file = 'bookstore/management/commands/test_import_authors.csv'
-        args = [path_file]
+
+        args = ['--hide', path_file]
 
         call_command('import_authors', *args)
 
