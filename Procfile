@@ -1,0 +1,1 @@
+web: gunicorn olistbackend.wsgi --log-file -
