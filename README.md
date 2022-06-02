@@ -4,7 +4,7 @@ This project was created using the Olist backend challenge. Whis is an API to ma
 
 You can see the API Documentation at ---
 
-## Instaltion and tests instructions
+## Installation and tests instructions
 
 To run this project it is necessary python >= 3.8.
 
